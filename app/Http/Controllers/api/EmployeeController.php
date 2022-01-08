@@ -50,21 +50,18 @@ class EmployeeController extends Controller
             'salary' => 'required|max:7'
 
         ]);
-        
-        try {
-            $response = $this->employee->createOrUpdate($id, $collection);
-            return response()->json([
-                'success' => true,
-                'message' => 'success',
-                'data' => $response
 
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'Err',
-                'errors' => $e->getMessage()
-            ]);
-        }
+        $response = $this->employee->createOrUpdate($id, $collection);
+            return response()->json($response);
+
+        // try {
+            
+        // } catch (\Exception $e) {
+        //     return response()->json([
+        //         'message' => 'error',
+        //         'error' => $e->getMessage()
+        //     ]);
+        // }
     }
 
     /**

@@ -14,17 +14,7 @@ class CrudController extends Controller
      */
     public function index()
     {
-        $api_url = "http://127.0.0.1:8000/api/pegawai";
-
-        $client = curl_init($api_url);
-        
-        curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
-        
-        $response = curl_exec($client);
-        dd($response);
-        
-        $result = json_decode($response);
-        //var_dump($result);
+        //
     }
 
     /**
@@ -34,7 +24,7 @@ class CrudController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
