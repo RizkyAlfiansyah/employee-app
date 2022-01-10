@@ -15,7 +15,7 @@ class EmployeeFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->firstName(),
-            'salary' => '4000'
+            'salary' => '6000'
         ];
     }
 }

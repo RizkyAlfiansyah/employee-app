@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CrudController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +19,13 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/main', function () {
-    return view('main');
+Route::get('/gaji', function () {
+    return view('salary');
+});
+
+Route::get('/test', function () {
+    $client = Http::dd()->get("https://api.kawalcorona.com/indonesia");
 });
 
 Route::get('/pegawai', [CrudController::class, 'index']);
+

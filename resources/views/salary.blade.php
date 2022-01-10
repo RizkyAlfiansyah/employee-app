@@ -5,10 +5,10 @@
 @section('content')
 
 <div class="row justify-content-center">
-    <div class="col-4">
+    <div class="col-7">
         <div class="row" style="color: aliceblue; background-color: #0C325F;">
             <div class="col">
-                <h3 class="text-center py-3 col-12 fw-light fs-5" >Data Pegawai</h3>
+                <h3 class="text-center py-3 col-12 fw-light fs-5" >Data Gaji Pegawai</h3>
             </div>
         </div>
         <div class="row justify-content-center bg-light mb-3">
@@ -24,7 +24,7 @@
                 <div class="row justify-content-center">
                     <div class="col-12">
                         {{-- @auth --}}
-                        <button type="button" class="btn btn-info p-2 shadow rounded-3 col-5 my-2 " style="color:aliceblue; background-color: #30AEE4;" onClick="create()" >Tambah Pegawai</button>
+                        <button type="button" class="btn btn-info p-2 shadow rounded-3 col-5 my-2 " style="color:aliceblue; background-color: #30AEE4;" onClick="create()" >Input Gaji</button>
                         {{-- <form action="/logout" method="POST">
                         @csrf
                             <button type="submit" class="btn btn-info p-3 shadow rounded-3 col-12 my-2 " style="color:aliceblue; background-color: #30AEE4;">Logout   
@@ -41,7 +41,7 @@
             <div id="fetch-data">
                 <div class="row justify-content-center my-2">
                     <div class="col lg-4">
-                        <table class="table mx-2">
+                        <table class="table mx-2" id="tableManager">
                             <thead>
                               <tr>
                                 <th scope="col">No.</th>
@@ -118,7 +118,16 @@
                         `;
                     });
                     document.getElementById('fetch').innerHTML = output;
+                    $("#tableManager").tablemanager({
+                        vocabulary : {
+                            voc_show_rows : "Rows Per Page"
+                        },
+                        pagination : true,
+                        showrows : [10,15]
+                    })
                 }
+
+
 			})
 		}
     
@@ -126,6 +135,11 @@
     function create() {
         $("#addModal").modal('show');
         $("#exampleModalLabel").html('Input Pegawai Baru');
+        if( $(".btn-close").click())
+        {
+            document.getElementById('name').value='';
+            document.getElementById('salary').value='';
+        }
     }
 
     function addPost(e) {

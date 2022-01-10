@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostRequest;
 use App\Repository\IEmployeeRepository;
 use Illuminate\Http\Request;
 
@@ -43,25 +44,13 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id=null)
+    public function store(StorePostRequest $request, $id=null)
     {
-        $collection = $request->validate([
-            'name'=> 'required|max:10|unique:employees',
-            'salary' => 'required|max:7'
-
-        ]);
+        $collection = $request->validated();
 
         $response = $this->employee->createOrUpdate($id, $collection);
             return response()->json($response);
 
-        // try {
-            
-        // } catch (\Exception $e) {
-        //     return response()->json([
-        //         'message' => 'error',
-        //         'error' => $e->getMessage()
-        //     ]);
-        // }
     }
 
     /**

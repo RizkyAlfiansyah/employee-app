@@ -11,7 +11,7 @@ class EmployeeRepository implements IEmployeeRepository
 
     public function getAll()
     {
-        return Employee::get();
+        return Employee::all();
     }
 
     public function getById($id)
